@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEO and Analytic</title>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/settings.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <a href="general-settings.html" class="nav-item">
+            General Settings
+          </a>
+
+          <a href="contracts.html" class="nav-item"> Contracts </a>
+
+          <a href="SEO-and-Analytics.html" class="nav-item active">
+            SEO and Analytics
+          </a>
+
+          <a href="roles.html" class="nav-item"> Roles </a>
+        </header>
+
+        <main>
+          <div id="toastSuccess" class="toast success"></div>
+          <div id="toastError" class="toast error"></div>
+
+          <div class="seoContainer">
+            <div class="seo-group">
+              <label for="title">SEO Title</label>
+              <input
+                type="text"
+                id="title"
+                maxlength="60"
+                placeholder="Enter SEO title"
+              />
+            </div>
+
+            <div class="seo-group">
+              <label for="description">Description</label>
+              <textarea
+                id="description"
+                maxlength="160"
+                placeholder="Enter description"
+              ></textarea>
+            </div>
+
+            <div class="seo-group">
+              <label for="keyword">Keyword</label>
+              <input
+                type="text"
+                id="keyword"
+                maxlength="50"
+                placeholder="Example: men's running shoes"
+              />
+            </div>
+
+            <button class="seoButton">
+              <span class="loader"></span>
+              Save
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="./js/seo-and-analytics.js" type="module"></script>
+  </body>
+</html>

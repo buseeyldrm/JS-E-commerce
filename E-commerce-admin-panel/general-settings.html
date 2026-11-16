@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>General Settings</title>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/settings.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <a href="general-settings.html" class="nav-item active">
+            General Settings
+          </a>
+
+          <a href="contracts.html" class="nav-item"> Contracts </a>
+
+          <a href="SEO-and-Analytics.html" class="nav-item">
+            SEO and Analytics
+          </a>
+
+          <a href="roles.html" class="nav-item"> Roles </a>
+        </header>
+
+        <main>
+          <div id="toastSuccess" class="toast success"></div>
+          <div id="toastError" class="toast error"></div>
+          <div class="settingContainer">
+            <div class="left-container">
+              <div class="maintenance-work">
+                <label for="">Maintenance Work</label>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider"></span>
+                </label>
+                <button class="changeButton">
+                  <span class="loader"></span>
+                  <span>Save</span>
+                </button>
+              </div>
+              <div class="currency-container">
+                <label for="currency" class="input-label">Currency</label>
+
+                <select id="currency" class="currency-select">
+                  <option value="TRY">🇹🇷 Turkish Lira (TRY)</option>
+                  <option value="USD">🇺🇸 US Dollar (USD)</option>
+                  <option value="EUR">🇪🇺 Euro (EUR)</option>
+                  <option value="GBP">🇬🇧 British Pound (GBP)</option>
+                </select>
+
+                <button class="currencyButton">
+                  <span class="loader"></span>
+                  <span>Save</span>
+                </button>
+              </div>
+            </div>
+            <div class="midde-container">
+              <div class="shippingCompanies">
+                <label for="kargo">Shipping Companies</label>
+                <select id="kargo" class="kargo-select">
+                  <option value="express">Express Kargo</option>
+                  <option value="surat">Sürat Kargo</option>
+                  <option value="aras">Aras Kargo</option>
+                  <option value="yurtiçi">Yurtiçi Kargo</option>
+                  <option value="kolayGelsin">Kolay Gelsin</option>
+                  <option value="ptt">PTT Kargo</option>
+                </select>
+
+                <label for="" class="average">Average Duration</label>
+                <select name="" id="time" class="time-select">
+                  <option value="1-2">1-2 Day</option>
+                  <option value="3-4">3-4 Day</option>
+                  <option value="4-5">4-5 Day</option>
+                  <option value="5-6">5-6 Day</option>
+                </select>
+
+                <button class="kargoButton">
+                  <span class="loader"></span>
+                  <span>Save</span>
+                </button>
+              </div>
+            </div>
+            <div class="right-container">
+              <label for="" id="contact">Contact Information</label>
+              <div class="contactInformation">
+                <div class="input-group">
+                  <label for="" id="tel">Phone</label>
+                  <input type="tel" id="telNo" placeholder="Phone" />
+                </div>
+                <div class="input-group">
+                  <label for="" id="registrationNumber"
+                    >Registration Number</label
+                  >
+                  <input
+                    type="number"
+                    id="registrationNo"
+                    placeholder="Registration"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="" id="kepAddress">KEP Address</label>
+                  <input type="text" id="kepNo" placeholder="KEP Address" />
+                </div>
+                <div class="input-group">
+                  <label for="" id="mersis">Mersis Number</label>
+                  <input
+                    type="number"
+                    id="mersisNo"
+                    placeholder="Mersis Number"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="" id="responsibility">Person in Charge</label>
+                  <input
+                    type="text"
+                    placeholder="Person in Charge"
+                    id="person"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="" id="callCenter">Call Center</label>
+                  <input type="tel" placeholder="Call Center" id="callNo" />
+                </div>
+                <div class="input-group address-group">
+                  <label for="address">Address</label>
+                  <textarea name="" id="address"></textarea>
+                </div>
+                <button class="contactButton">
+                  <span class="loader"></span>Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="./js/general-settings.js" type="module"></script>
+  </body>
+</html>

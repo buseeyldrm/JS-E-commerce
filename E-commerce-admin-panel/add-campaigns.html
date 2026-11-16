@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Campaigns</title>
+    <link rel="stylesheet" href="./css/add-product.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <i class="fa-regular fa-circle-left"></i>
+          <h2 id="pageTitle">Add Campaigns</h2>
+        </header>
+
+        <main>
+          <div class="add-product-card">
+            <h4>Add Campaigns</h4>
+            <div id="toastSucces" class="toast success">
+              The campaign has been successfully registered.
+            </div>
+            <div id="toastError" class="toast error">
+              The campaign could not be saved
+            </div>
+
+            <form id="addCampaignForm">
+              <div class="form-top">
+                <label for="productImage" class="image-box">
+                  <img id="previewImage" hidden />
+                  <div class="previewBox">
+                    <i class="fa-solid fa-image"></i>
+                    <span class>Select Image</span>
+                  </div>
+                </label>
+
+                <input
+                  type="file"
+                  id="productImage"
+                  accept=".png,.jpg,.jpeg,.webp,.svg"
+                  hidden
+                />
+              </div>
+
+              <div class="form-bottom">
+                <div class="input-group">
+                  <label>Campign Title</label>
+                  <input
+                    type="text"
+                    id="productName"
+                    placeholder="Product Name"
+                  />
+                </div>
+                <div class="input-group">
+                  <label>Link</label>
+                  <div>
+                    <input
+                      type="url"
+                      id="campaignLink"
+                      placeholder="Link Adress"
+                    />
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label>Explanation</label>
+
+                  <textarea
+                    id="campaignDescription"
+                    placeholder="Campaign Product Explanation"
+                    rows="5"
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="add-compaignBtn">
+                  <span class="loader"></span>Save Campaign
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="./js/add-compaigns.js" type="module"></script>
+  </body>
+</html>

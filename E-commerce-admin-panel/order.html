@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders</title>
+
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <h2 id="pageTitle">Orders</h2>
+        </header>
+
+        <main>
+          <div class="orders-card">
+            <div class="card-header">
+              <div class="card-title">
+                <h3>Orders</h3>
+              </div>
+              <div class="filters">
+                <div class="search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Search" id="searchInput" />
+                </div>
+
+                <div class="date-box">
+                  <input type="date" id="filterDate" />
+                  <span class="placeholder" id="datePlaceholder"
+                    >Date Range</span
+                  >
+
+                  <i id="calendarIcon" class="fa-regular fa-calendar-days"></i>
+                  <i id="clearIcon" class="fa-solid fa-xmark"></i>
+                </div>
+
+                <div class="status-box">
+                  <select id="statusFilter">
+                    <option value="">All Status</option>
+                    <option>Pending</option>
+                    <option>Processing</option>
+                    <option>Shipped</option>
+                    <option>Delivered</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <table class="products-table">
+              <thead>
+                <tr>
+                  <th class="sortable" data-sort="id">
+                    Order ID
+                    <i class="fa-solid fa-sort"></i>
+                  </th>
+
+                  <th class="sortable" data-sort="customer">
+                    Customer
+                    <i class="fa-solid fa-sort"></i>
+                  </th>
+
+                  <th class="sortable" data-sort="date">
+                    Date
+                    <i class="fa-solid fa-sort"></i>
+                  </th>
+
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th class="sortable" data-sort="payment">
+                    Payment
+                    <i class="fa-solid fa-sort"></i>
+                  </th>
+
+                  <th class="sortable" data-sort="status">
+                    Status
+                    <i class="fa-solid fa-sort"></i>
+                  </th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="productsBody"></tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div class="order-delete-overlay" id="orderDeleteModal">
+      <div class="order-delete-modal">
+        <h3>Delete Order</h3>
+
+        <p>Are you sure you want to delete this order?</p>
+
+        <div class="order-modal-buttons">
+          <button id="cancelBtn">Cancel</button>
+          <button id="confirmDeleteBtn">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="order-edit-overlay" id="orderEditModal">
+      <div class="order-edit-modal">
+        <div class="modal-header">
+          <h3>Edit Order</h3>
+          <button id="closeEditModal" class="close-modal-btn">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="status-section">
+          <h4>Order Status</h4>
+
+          <div class="step-buttons">
+            <button id="prevStepBtn">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <span id="currentStatus"> Processing </span>
+
+            <button id="nextStepBtn">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <button id="cancelOrderBtn">Cancel Order</button>
+        </div>
+
+        <div class="address-section">
+          <h4>Shipping Address</h4>
+
+          <div class="input-group">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" />
+          </div>
+
+          <div class="input-group">
+            <label for="phone">Phone</label>
+            <input id="phone" />
+          </div>
+
+          <div class="input-group">
+            <label for="address">Address</label>
+            <textarea id="address"></textarea>
+          </div>
+        </div>
+
+        <button id="saveOrderBtn">Save Changes</button>
+      </div>
+    </div>
+    <script src="./js/orders.js" type="module"></script>
+  </body>
+</html>

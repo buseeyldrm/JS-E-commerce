@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+    <div class="w-full h-[100vh]">
+      <nav class="w-full">
+        <div
+          class="w-full pl-[20px] h-[80px] flex items-center pr-[50px] justify-between gap-4"
+        >
+          <div class="flex items-center ">
+            <img src="./image/logo.png" class="w-22" alt="" />
+            <a
+              href="index.html"
+              class="text-[32px] font-bold text-[#053D2E]"
+              id="trendBy"
+            >
+              TrendBy
+            </a>
+          </div>
+
+          <div class="flex items-center gap-10">
+            <div class="relative group">
+              <div class="flex items-center gap-2 cursor-pointer">
+                <p class="font-[500]">Categories</p>
+                <i class="fa-solid fa-angle-down text-sm pt-[2px]"></i>
+              </div>
+
+              <div
+                id="categoryDropdown"
+                class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 mt-4"
+              ></div>
+            </div>
+
+            <p class="cursor-pointer font-[500]">Deals</p>
+            <p class="cursor-pointer font-[500]">What's New</p>
+            <p class="cursor-pointer font-[500]">Delivery</p>
+          </div>
+
+          <div class="flex items-center w-[400px] justify-end">
+            <div class="relative flex-end flex">
+              <div
+                id="searchBox"
+                class="w-[300px] h-[46px] px-4 rounded-full flex items-center gap-3 bg-gray-50"
+              >
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Search Product"
+                  class="w-full outline-none bg-transparent"
+                />
+
+                <i
+                  id="searchIcon"
+                  class="fa-solid fa-magnifying-glass text-gray-500 cursor-pointer flex-end"
+                ></i>
+              </div>
+
+              <div
+                id="searchResults"
+                class="absolute top-14 right-0 w-[750px] bg-white shadow-lg hidden z-50"
+              ></div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <div class="relative group">
+              <div class="flex items-center gap-2 cursor-pointer">
+                <i class="fa-regular fa-user text-xl"></i>
+                <p class="font-[500]">Account</p>
+              </div>
+
+              <div
+                class="absolute right-0 pt-6 w-55 bg-white rounded-xl shadow-lg hidden group-hover:block z-50"
+              >
+                <a href="orders.html" class="block px-4 py-3 hover:bg-gray-100">
+                  My orders
+                </a>
+
+                <a
+                  href="profile.html"
+                  class="block px-4 py-3 hover:bg-gray-100"
+                >
+                  User İnformation
+                </a>
+
+                <button
+                  id="logoutBtn"
+                  class="w-full text-left px-4 py-3 hover:bg-red-100 text-red-600 cursor-pointer"
+                >
+                  Log Out
+                </button>
+              </div>
+            </div>
+
+            <div class="relative cursor-pointer basket-card">
+              <div class="flex items-center gap-2" id="basket-icon">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+                <p class="font-[500]">Cart</p>
+              </div>
+
+              <span
+                id="basketCount"
+                class="absolute -top-3 left-4 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center hidden"
+              >
+                0
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main class="w-full flex items-start px-9 flex-col mt-10">
+     <div
+    id="toast"
+    class="fixed top-20 right-5 translate-x-[400px] transition-all duration-300 bg-green-600 text-white px-5 py-3 rounded-lg shadow-lg z-50"
+></div>
+        <div class="w-full flex gap-6 items-start">
+
+          <div class="w-[50%]">
+            <div class="w-full flex flex-col justify-center items-center  pt-5">
+              <div class="w-full bg-[#fff] rounded-2xl  flex items-center justify-center max-h-[800px] ">
+                <img id="mainImage" class="w-auto max-h-[450px] object-fit object-contain "
+>
+            </div>
+            <div class="w-full flex justify-center items-center min-h-[100px] wrap">
+                <div
+                    id="thumbnailContainer"
+                    class="flex gap-4 mt-5 flex-wrap">
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="w-[50%] px-6 py-6 flex flex-col ">
+            <div class="w-full flex justify-between ">
+                <h1 id="title" class="font-bold text-[25px]"></h1>
+              <p id="price" class="font-bold text-[25px] whitespace-nowrap"></p>
+            </div>
+            <div>
+                <p id="desc" class="text-[18px] text-gray-500 mt-2"></p>
+            </div>
+
+            <hr class="w-full text-gray-300 mt-6">
+               <div class="attributes"></div>
+
+           <hr class="w-full text-gray-300 mt-6">
+            <div class="mt-8 flex items-center  gap-13">
+            <div
+                class="w-[200px] flex items-center border border-gray-300 rounded-full overflow-hidden justify-center gap-3 ">
+
+                <button
+                    id="minusBtn"
+                    class="w-14 h-14 text-2xl  transition cursor-pointer ">
+                    <i class="fa-solid fa-minus text-[#F27A1A] text-[20px] hover:text-[#FFB843]"></i>
+                </button>
+
+                <span
+                    id="quantity"
+                    class="w-9 text-center font-bold text-lg text-[orange]">
+                    1
+                </span>
+
+                <button
+                    id="plusBtn"
+                    class="w-14 h-14 text-2xl  transition cursor-pointer ">
+                    <i class="fa-solid fa-plus  text-[#F27A1A] text-[20px] hover:text-[#FFB843]"></i>
+                </button>
+
+            </div>
+            
+            <div class="w-full">
+                <p class="text-[15px]">Only <span class="text-[#F27A1A] font-bold">12 Items</span> Left</p>
+                <p class="text-[15px] font-medium">Don't miss it</p>
+            </div>
+        </div>
+        <hr class="w-full text-gray-300 mt-6">
+         <div class="w-full flex justify-between items-center mt-6 ">
+              <button
+                id="addPaymentBtn"
+                class="bg-[#fff] text-black px-8 py-3 rounded-full hover:bg-[#07523f] transition border border-gray-200 w-[250px] hover:text-[#fff]">
+                Buy Now
+            </button>
+            <button
+                id="addBasketBtn"
+                class="bg-[#053D2E] text-white px-8 py-3 rounded-full hover:bg-[#07523f] transition w-[250px]">
+                Add To Cart
+            </button>
+            
+          </div>
+       <div class="w-full border rounded-md border-gray-300 mt-15 flex flex-col gap-3 px-6 py-4">
+        <div class="w-full py-2 items-center flex flex-col">
+        <div class="flex w-full gap-5 items-center">
+        <i class="fa-solid fa-truck text-[orange] text-[20px]"></i>  
+        <p class="free-shipping font-bold text-[16px]" id="shippingText"></p>          
+        </div>
+        <div class="w-full items-center mt-2">
+            <a href="">Enter your Postal code for Delivery Availability</a>
+        </div>
+        </div>
+        <hr class="w-full text-gray-300  ">
+
+        <div class="w-full  py-2 items-center flex flex-col">
+        <div class="flex w-full gap-5 items-center  ">
+        <i class="fa-regular fa-calendar text-[orange] text-[20px]"></i>
+        <p class="text-[16px] font-bold ">Return Delivery</p>          
+        </div>
+        <div class="w-full items-center mt-2">
+            <p>Free 30 days Delivery Returns. <a href="#" class="font-medium">Details</a></p>
+        </div>
+        </div>
+
+       </div>
+    
+        </div>  
+        </div>
+        <div class="w-full mt-20 px-6 py-7  flex-col flex  ">
+            <h1 class="text-[25px] font-bold" id="titleSpecifition"></h1>
+
+            <div class="w-full flex justify-between items-center mt-6 gap-10 items-stretch">
+                <div class="w-[50%]  flex flex-col px-5 py-4 bg-[#F8F9FA]">
+                    <h4 class="text-[20px] font-semibold mb-3">GENERAL</h4>
+
+                    <table class="w-full">
+                        <tbody id="generalInfo"></tbody>
+                    </table>
+                </div>
+                <div class="w-[50%]  flex flex-col px-5 py-4 bg-[#F8F9FA] items-stretch">
+                    <h4 class="text-[20px]  font-semibold mb-3">PRODUCT DETAILS</h4>
+                    <table class="w-full">
+                   <tbody id="productDetails"></tbody>
+                   </table>
+                </div>
+            </div>
+        </div>
+        
+      
+      </main>
+
+    </div>
+    <script src="./js/product-detail.js" type="module"></script>
+  </body>
+</html>

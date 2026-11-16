@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roller</title>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/settings.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <a href="general-settings.html" class="nav-item">
+            General Settings
+          </a>
+
+          <a href="contracts.html" class="nav-item"> Contracts </a>
+
+          <a href="SEO-and-Analytics.html" class="nav-item">
+            SEO and Analytics
+          </a>
+
+          <a href="roles.html" class="nav-item active"> Roles </a>
+        </header>
+
+        <main>
+          <div id="toastSuccess" class="toast success"></div>
+          <div id="toastError" class="toast error"></div>
+
+          <div class="rolesContainer">
+            <div class="roles">
+              <h4>Roles</h4>
+              <button class="rolesAddButton">
+                <span class="loader"></span>Add
+              </button>
+            </div>
+            <div class="roles-items"></div>
+            <button class="rolesSaveButton">
+              <span class="loader"></span>Save
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div class="modal" id="roleModal">
+      <div class="modal-content">
+        <h3>Add Role</h3>
+
+        <input type="text" id="roleName" placeholder="Role name" />
+
+        <div class="modal-buttons">
+          <button id="cancelRole">Cancel</button>
+          <button id="saveRole">Save</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="editModal">
+      <div class="modal-content">
+        <h3>Edit Role</h3>
+
+        <input type="text" id="editName" placeholder="Role name" />
+
+        <div class="modal-buttons">
+          <button id="cancelEdit">Cancel</button>
+          <button id="saveEdit">
+            <span class="loader"></span>
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="deleteModal">
+      <div class="modal-content">
+        <h3>Delete Role</h3>
+        <p>Are you sure you want to delete this role?</p>
+
+        <div class="modal-buttons">
+          <button id="cancelDelete">Cancel</button>
+          <button id="confirmDelete">
+            <span class="loader"></span>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/roles.js" type="module"></script>
+  </body>
+</html>

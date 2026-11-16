@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="./css/add-product.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/edit-product.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <i class="fa-regular fa-circle-left"></i>
+          <h2 id="pageTitle">Edit Product</h2>
+        </header>
+
+        <main>
+          <div class="add-product-card">
+            <h4>Create Product</h4>
+            <div id="toastSucces" class="toast success">
+              The product has been successfully updated.
+            </div>
+            <div id="toastError" class="toast error">
+              The product was not updated.
+            </div>
+
+            <form id="updateProductForm">
+              <div class="form-top">
+                <div id="imageContainer" class="image-container">
+                  <label class="image-box add-image">
+                    <input
+                      type="file"
+                      id="productImage"
+                      accept=".png,.jpg,.jpeg,.webp,.svg"
+                      hidden
+                    />
+
+                    <i class="fa-solid fa-plus"></i>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-bottom">
+                <div class="input-group">
+                  <label>Product Name</label>
+                  <input
+                    type="text"
+                    id="productName"
+                    placeholder="Product Name"
+                  />
+                </div>
+                <div class="input-group">
+                  <label>VAT Rate</label>
+                  <select id="vat">
+                    <option value="">Select</option>
+                    <option value="3">%3</option>
+                    <option value="5">%5</option>
+                    <option value="12">%12</option>
+                  </select>
+                </div>
+                <div class="input-group desc">
+                  <label>Product Description</label>
+                  <textarea
+                    type="text"
+                    id="productDesc"
+                    placeholder="Product Description"
+                  >
+                  </textarea>
+                </div>
+                <div class="input-group">
+                  <label>Stock State</label>
+                  <input type="number" id="stock" placeholder="Stock State" />
+                </div>
+                <div class="input-group">
+                  <label>Category</label>
+                  <select id="category">
+                    <option value="">Select</option>
+                  </select>
+                </div>
+                <div class="form-bottom">
+                  <div id="dynamicAttributes"></div>
+                </div>
+
+                <div class="input-group">
+                  <label>Price</label>
+                  <input type="number" id="price" placeholder="Add Price" />
+                </div>
+
+                <div class="input-group">
+                  <label>Status</label>
+                  <select id="status">
+                    <option value="Active">Active</option>
+                    <option value="Passive">Passive</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="save-btn">
+                  <span class="loader"></span>
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="./js/edit-product.js" type="module"></script>
+  </body>
+</html>

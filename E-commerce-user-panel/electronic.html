@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electronic</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="w-full">
+      <div
+        id="toast"
+        class="fixed top-0 right-5 translate-x-[400px] transition-all duration-300 bg-green-600 text-white px-5 py-3 rounded-lg shadow-lg z-50"
+      ></div>
+      <nav class="w-full">
+        <div
+          class="w-full pl-[20px] h-[80px] flex items-center pr-[50px] justify-between gap-4"
+        >
+          <div class="flex items-center">
+            <img src="./image/logo.png" class="w-22" alt="" />
+            <a
+              href="index.html"
+              class="text-[32px] font-bold text-[#053D2E]"
+              id="trendBy"
+            >
+              TrendBy
+            </a>
+          </div>
+
+          <div class="flex items-center gap-10">
+            <div class="relative group">
+              <div class="flex items-center gap-2 cursor-pointer">
+                <p class="font-[500]">Categories</p>
+                <i class="fa-solid fa-angle-down text-sm pt-[2px]"></i>
+              </div>
+
+              <div
+                id="categoryDropdown"
+                class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 mt-4"
+              ></div>
+            </div>
+
+            <p class="cursor-pointer font-[500]">Deals</p>
+            <p class="cursor-pointer font-[500]">What's New</p>
+            <p class="cursor-pointer font-[500]">Delivery</p>
+          </div>
+
+          <div class="flex items-center w-[400px] justify-end">
+            <div class="relative flex-end flex">
+              <div
+                id="searchBox"
+                class="w-[300px] h-[46px] px-4 rounded-full flex items-center gap-3 bg-gray-50"
+              >
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Search Product"
+                  class="w-full outline-none bg-transparent"
+                />
+
+                <i
+                  id="searchIcon"
+                  class="fa-solid fa-magnifying-glass text-gray-500 cursor-pointer flex-end"
+                ></i>
+              </div>
+
+              <div
+                id="searchResults"
+                class="absolute top-14 right-0 w-[750px] bg-white shadow-lg hidden z-50"
+              ></div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <div class="relative group">
+              <div class="flex items-center gap-2 cursor-pointer">
+                <i class="fa-regular fa-user text-xl"></i>
+                <p class="font-[500]">Account</p>
+              </div>
+
+              <div
+                class="absolute right-0 pt-6 w-55 bg-white rounded-xl shadow-lg hidden group-hover:block z-50"
+              >
+                <a href="orders.html" class="block px-4 py-3 hover:bg-gray-100">
+                  My orders
+                </a>
+
+                <a
+                  href="profile.html"
+                  class="block px-4 py-3 hover:bg-gray-100"
+                >
+                  User İnformation
+                </a>
+
+                <button
+                  id="logoutBtn"
+                  class="w-full text-left px-4 py-3 hover:bg-red-100 text-red-600 cursor-pointer"
+                >
+                  Log Out
+                </button>
+              </div>
+            </div>
+
+            <div class="relative cursor-pointer basket-card">
+              <div class="flex items-center gap-2" id="basket-icon">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+                <p class="font-[500]">Cart</p>
+              </div>
+
+              <span
+                id="basketCount"
+                class="absolute -top-3 left-4 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center hidden"
+              >
+                0
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="w-full relative">
+        <div class="w-full px-[60px]">
+          <img
+            class="h-[450px] w-full object-cover object-[center_72%] "
+            src="./image/electronic.png"
+            alt=""
+          />
+        <div class="absolute top-1/2 left-[120px] -translate-y-1/2">
+            <h1 class="text-[40px] text-[#003D28] font-[700]">
+              40% OFF SELECTED <br> HEADPHONES
+              
+            </h1>
+            <p class="mt-10 font-[500] text-[#003D28]">
+              Premium sound. Unbeatable prices.<br> Limited time only.
+            </p>
+            <button
+              class="bg-[#003D28] rounded-[20px] px-8 py-3 mt-5 text-[white] font-[500] cursor-pointer"
+            >
+              Buy Now
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-full px-[60px] mt-20 flex flex-col  items-center ">
+        <div class="w-full flex items-center ">
+         <div class="flex items-center justify-between gap-4 ">
+           <div class="w-full flex items-center gap-4">
+           <div class="relative">
+              <button id="typeBtn"
+                  class="px-6 py-2 bg-gray-100 rounded-lg w-[165px] flex justify-between items-center">
+                  <span id="typeText" class="text-gray-800 font-medium cursor-pointer text-[18px]">Type</span>
+                  <i class="fa-solid fa-angle-down"></i>
+              </button>
+
+              <div id="typeDropdown"
+                  class="absolute top-full left-0 mt-2 w-full bg-white rounded-lg shadow-lg hidden z-50">
+              </div>
+          </div>
+          </div>
+        </div>
+           <div class="w-full  flex items-center justify-end  ">
+             <div class="relative">
+              <button id="sortBtn"
+                  class="px-6 py-2 bg-gray-100 rounded-lg w-[180px] flex justify-between items-center">
+                  <span id="sortText" class="text-gray-800 font-medium cursor-pointer text-[18px]">Sort By</span>
+                  <i class="fa-solid fa-angle-down"></i>
+              </button>
+
+              <div id="sortDropdown"
+                  class="absolute top-full left-0 mt-2 w-full bg-white rounded-lg shadow-lg hidden z-50">
+              </div>
+          </div>
+        
+         </div>
+
+      </div>
+      <div class="mt-20 flex flex-col">
+        <div>
+          <h3 class="text-[32px] font-bold text-[#003D28] mb-8">
+            Electronic For You
+          </h3>
+        </div>
+        <div id="allElectronicCards" class="grid grid-cols-5 gap-6"></div>
+      </div>
+     
+   </div>
+      <footer class=" bg-gray-100 border-t border-gray-200 mt-16 ">
+        <div
+          class="max-w-7xl px-15 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+        >
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-5">TrendBy</h3>
+
+            <div class="flex flex-col gap-3 text-gray-600">
+              <a href="#" class="hover:text-black transition">Biz Kimiz</a>
+              <a href="#" class="hover:text-black transition">Kariyer</a>
+              <a href="#" class="hover:text-black transition">İletişim</a>
+              <a href="#" class="hover:text-black transition">
+                TrendBy'da Güvenlik
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-5">Campaigns</h3>
+
+            <div class="flex flex-col gap-3 text-gray-600">
+              <a href="#" class="hover:text-black transition">Campaigns</a>
+              <a href="#" class="hover:text-black transition">Shopping Loan</a>
+              <a href="#" class="hover:text-black transition">Gift Ideas</a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-5">
+              Sales Person
+            </h3>
+
+            <div class="flex flex-col gap-3 text-gray-600">
+              <a href="#" class="hover:text-black transition"
+                >Sell on TrendBy</a
+              >
+              <a href="#" class="hover:text-black transition">Basic Concepts</a>
+              <a href="#" class="hover:text-black transition"
+                >TrendBy Academy</a
+              >
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-5">Help</h3>
+
+            <div class="flex flex-col gap-3 text-gray-600">
+              <a href="#" class="hover:text-black transition">
+                Frequently Asked Questions
+              </a>
+              <a href="#" class="hover:text-black transition"> Live Support </a>
+              <a href="#" class="hover:text-black transition">
+                Transaction Guide
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-200">
+          <div
+            class="max-w-7xl mx-auto px-10 py-5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-3"
+          >
+            <p>© 2026 TrendBy. All rights reserved.</p>
+
+            <div class="flex gap-6">
+              <a href="#" class="hover:text-black transition">Privacy</a>
+              <a href="#" class="hover:text-black transition">Terms</a>
+              <a href="#" class="hover:text-black transition">Cookies</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    
+
+    <script src="./js/electronic.js" type="module"></script>
+  </body>
+</html>

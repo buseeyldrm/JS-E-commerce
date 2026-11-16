@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Categories</title>
+    <link rel="stylesheet" href="./css/add-product.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/add-category.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <i class="fa-regular fa-circle-left"></i>
+          <h2 id="pageTitle">Add Categories</h2>
+        </header>
+
+        <main>
+          <div class="add-product-card">
+            <h4>Add Category</h4>
+            <div id="toastSucces" class="toast success">
+              The category has been successfully registered.
+            </div>
+            <div id="toastError" class="toast error">
+              The category could not be saved
+            </div>
+
+            <form id="addCategoryForm">
+              <div class="form-group">
+                <label for="categoryName">Category Name</label>
+                <input
+                  type="text"
+                  id="categoryName"
+                  placeholder="Category Name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="categoryColor">Category Color</label>
+                <div class="color-picker">
+                  <input type="color" id="categoryColor" value="#484848" />
+                  <span id="colorValue"></span>
+                </div>
+              </div>
+              <button type="submit" class="categoryBtn">
+                <span class="loader"></span>Save Category
+              </button>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="./js/add-categories.js" type="module"></script>
+  </body>
+</html>

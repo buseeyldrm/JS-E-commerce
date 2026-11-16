@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-[Poppins] bg-white">
+    <div class="w-full h-screen flex items-center justify-center">
+      <div
+        class="w-[90%] min-h-[800px] flex rounded-[30px] overflow-hidden bg-white shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
+      >
+        <div
+          id="toast"
+          class="fixed top-5 right-5 translate-x-[500px] transition-all duration-500 z-50"
+        ></div>
+        <div class="w-1/2 flex items-center">
+          <div class="w-[75%] mx-auto flex flex-col gap-8">
+            <h2 class="text-[32px] font-semibold">Login to your account</h2>
+
+            <form class="flex flex-col gap-6" id="loginForm">
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-bold text-[#484848]">
+                  Email or Phone Number
+                </label>
+
+                <input
+                  type="text"
+                  placeholder="Enter or Phone Number"
+                  class="h-14 rounded-[5px] border border-gray-300 px-5 outline-none transition duration-300 bg-[#f5f5f5] text-[gray]"
+                  id="emailOrPhone"
+                />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-bold text-[#484848]">
+                  Password
+                </label>
+
+                <div class="relative">
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter password"
+                    class="w-full h-14 rounded-[5px] border border-gray-300 px-5 pr-14 outline-none transition duration-300 bg-[#f5f5f5] text-gray-700"
+                  />
+
+                  <button
+                    id="togglePassword"
+                    type="button"
+                    class="absolute inset-y-0 right-4 flex items-center text-gray-500"
+                  >
+                    <i id="passwordIcon" class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <input id="rememberMe" type="checkbox" class="hidden" />
+
+                  <label for="rememberMe" class="cursor-pointer">
+                    <div
+                      id="switchBg"
+                      class="w-11 h-6 bg-gray-300 rounded-full relative transition"
+                    >
+                      <div
+                        id="switchCircle"
+                        class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-all duration-300"
+                      ></div>
+                    </div>
+                  </label>
+
+                  <label
+                    for="rememberMe"
+                    class="text-sm font-semibold text-[#484848] cursor-pointer"
+                  >
+                    Remember me
+                  </label>
+                </div>
+
+                <a
+                  href="#"
+                  class="text-sm font-semibold text-black hover:underline"
+                >
+                  Forgot password?
+                </a>
+              </div>
+
+              <button
+                id="loginBtn"
+                type="submit"
+                class="h-14 rounded-xl bg-black text-white font-semibold hover:opacity-90 transition cursor-pointer"
+              >
+                Sign In
+              </button>
+            </form>
+
+            <p class="text-center text-gray-500">
+              Don't have an account?
+
+              <a href="register.html" class="font-semibold text-black ml-1">
+                Create Account
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="w-1/2">
+          <img
+            src="./image/foto.png"
+            class="w-full h-full object-cover"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <script src="./js/login.js" type="module"></script>
+  </body>
+</html>

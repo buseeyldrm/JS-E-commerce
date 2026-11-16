@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Screen</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  </head>
+    <div class="w-full">
+      <nav class="w-full">
+        <div
+          class="w-full pl-[20px] h-[80px] flex items-center pr-[50px] justify-between gap-4"
+        >
+          <div class="flex items-center">
+            <img src="./image/logo.png" class="w-22" alt="" />
+            <a
+              href="index.html"
+              class="text-[32px] font-bold text-[#053D2E]"
+              id="trendBy"
+            >
+              TrendBy
+            </a>
+          </div>
+
+          <div class="flex items-center gap-10">
+            <div class="relative group">
+              <div class="flex items-center gap-2 cursor-pointer">
+                <p class="font-[500]">Categories</p>
+                <i class="fa-solid fa-angle-down text-sm pt-[2px]"></i>
+              </div>
+
+              <div
+                id="categoryDropdown"
+                class="absolute top-full left-0 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 mt-4"
+              ></div>
+            </div>
+
+            <p class="cursor-pointer font-[500]">Deals</p>
+            <p class="cursor-pointer font-[500]">What's New</p>
+            <p class="cursor-pointer font-[500]">Delivery</p>
+          </div>
+
+          <div class="flex items-center w-[400px] justify-end">
+            <div class="relative flex-end flex">
+              <div
+                id="searchBox"
+                class="w-[300px] h-[46px] px-4 rounded-full flex items-center gap-3 bg-gray-50"
+              >
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Search Product"
+                  class="w-full outline-none bg-transparent"
+                />
+
+                <i
+                  id="searchIcon"
+                  class="fa-solid fa-magnifying-glass text-gray-500 cursor-pointer flex-end"
+                ></i>
+              </div>
+
+              <div
+                id="searchResults"
+                class="absolute top-14 right-0 w-[750px] bg-white shadow-lg hidden z-50"
+              ></div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <div class="relative group">
+              <div class="flex items-center gap-2 cursor-pointer">
+                <i class="fa-regular fa-user text-xl"></i>
+                <p class="font-[500]">Account</p>
+              </div>
+
+              <div
+                class="absolute right-0 pt-6 w-55 bg-white rounded-xl shadow-lg hidden group-hover:block z-50"
+              >
+                <a href="orders.html" class="block px-4 py-3 hover:bg-gray-100">
+                  My orders
+                </a>
+
+                <a
+                  href="profile.html"
+                  class="block px-4 py-3 hover:bg-gray-100"
+                >
+                  User İnformation
+                </a>
+
+                <button
+                  id="logoutBtn"
+                  class="w-full text-left px-4 py-3 hover:bg-red-100 text-red-600 cursor-pointer"
+                >
+                  Log Out
+                </button>
+              </div>
+            </div>
+
+            <div class="relative cursor-pointer basket-card">
+              <div class="flex items-center gap-2" id="basket-icon">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+                <p class="font-[500]">Cart</p>
+              </div>
+
+              <span
+                id="basketCount"
+                class="absolute -top-3 left-4 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center hidden"
+              >
+                0
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main class="w-full flex gap-6 justify-center items-start px-9 mt-6">
+       <div class=" w-[70%] ">
+        <div
+    id="toast"
+    class="fixed top-5 right-5 bg-red-500 text-white px-5 py-3 rounded-lg shadow-lg hidden z-50">
+    </div>
+          <div class="w-full  items-center flex gap-2"><h2 class="text-[24px] font-bold text-[#F27A1A] sticky">Review Item</h2>
+        <span class="text-[20px] font-medium text-[#F27A1A]" id="productCount"></span>
+        </div>
+
+      <div class="w-full flex flex-col rounded-lg mt-7 h-[50vh] overflow-y-auto shadow-md">   
+     <div id="paymentProducts"></div>
+
+        </div>
+        <div class=" border mt-25 px-10 py-10 border-gray-200 rounded-md mb-10">
+            <div class="flex justify-between mt-3 items-center">
+                <h3 class="text-[20px] font-medium">Delivery Information</h3>
+                <div>
+                    <button class="bg-gray-100 px-7 py-2 rounded-xl text-[#484848] font-medium hidden" id="editBtn">Edit</button>
+                    <button class="bg-gray-100 px-7 py-2 rounded-xl text-[#484848] font-medium "id="saveBtn" >Save Information</button>
+
+                </div>
+
+            </div>
+
+            <div id="deliveryForm">
+            <div class="w-full flex flex-col items-center gap-4 ">
+                    <div class="w-full flex justify-between gap-10 mt-5">
+                    <label class="w-full flex flex-col gap-2">
+                    <span class="font-medium text-[#484848]">Name</span>
+                    <input
+                        type="text"
+                        id="nameInput"
+                        placeholder="Enter your name"
+                        class="border border-gray-300 rounded-lg px-3 py-2 outline-none focus:border-orange-500"
+                    >
+                    </label>
+                     <label class="w-full flex flex-col gap-2">
+                    <span class="font-medium text-[#484848]">Surname</span>
+                    <input
+                        type="text"
+                        id="surnameInput"
+                        placeholder="Enter your surname"
+                        class="border border-gray-300 rounded-lg px-3 py-2 outline-none focus:border-orange-500"
+                    >
+                    </label>
+
+                    </div>
+                </div>
+                <div class="w-full mt-3">
+                <label class="w-full flex flex-col gap-2">
+                    <span class="font-medium text-[#484848]">Address</span>
+                    <input
+                        type="text"
+                        id="addressInput"
+                        placeholder="Enter your adress"
+                        class="border border-gray-300 rounded-lg px-3 py-3 outline-none focus:border-orange-500"
+                    >
+                    </label>
+            </div>
+             <div class="w-full flex flex-col items-center gap-4">
+                    <div class="w-full flex justify-between gap-10 mt-5">
+                    <label class="w-full flex flex-col gap-2">
+                    <span class="font-medium text-[#484848]">City/Town</span>
+                    <input
+                        type="text"
+                        id="cityInput"
+                        placeholder="Enter your City"
+                        class="border border-gray-300 rounded-lg px-3 py-2 outline-none focus:border-orange-500"
+                    >
+                    </label>
+                     <label class="w-full flex flex-col gap-2">
+                    <span class="font-medium text-[#484848]">Zip Code</span>
+                    <input
+                        type="number"
+                        id="zipInput"
+                        placeholder="Enter your zipCode"
+                        class="border border-gray-300 rounded-lg px-3 py-2 outline-none focus:border-orange-500"
+                    >
+                    </label>
+
+                    </div>
+             </div>
+             <div class="w-full flex flex-col items-center gap-4">
+                    <div class="w-full flex justify-between gap-10 mt-5">
+                    <label class="w-full flex flex-col gap-2">
+                    <span class="font-medium text-[#484848]">Mobile</span>
+                    <input
+                        type="tel"
+                        id="mobileInput"
+                        placeholder="Enter your mobile"
+                        class="border border-gray-300 rounded-lg px-3 py-2 outline-none focus:border-orange-500"
+                    >
+                    </label>
+                     <label class="w-full flex flex-col gap-2">
+                    <span class="font-medium text-[#484848]">Email</span>
+                    <input
+                        type="mail"
+                        id="emailInput"
+                        placeholder="Enter your email"
+                        class="border border-gray-300 rounded-lg px-3 py-2 outline-none focus:border-orange-500"
+                    >
+                    </label>
+
+                    </div>
+            </div>
+
+            
+                </div>
+                 <div id="deliveryInfo" class="hidden mt-6">
+                <p><b>Name:</b> <span id="showName"></span></p>
+                <p><b>Surname:</b> <span id="showSurname"></span></p>
+                <p><b>Address:</b> <span id="showAddress"></span></p>
+                <p><b>City:</b> <span id="showCity"></span></p>
+                <p><b>Zip Code:</b> <span id="showZip"></span></p>
+                <p><b>Mobile:</b> <span id="showMobile"></span></p>
+                <p><b>Email:</b> <span id="showEmail"></span></p>
+                </div>
+           
+        </div>
+        </div>
+        <div class="w-[26%] flex flex-col gap-10 justify-between ">
+          <div class=" w-full flex flex-col px-6 mt-16  py-6 border border-gray-200">
+            <div class="w-full flex justify-start  flex-col">
+                <h4 class="font-bold text-[25px] text-[orange]">Order Summery</h4>
+                <h6 class="text-[20px]  font-bold mt-2" id="total">Total: </h6>
+            </div>
+            <hr class="w-full text-gray-200 mt-7">
+            <div class="mt-6">
+                <h3 class="text-[20px] text-orange-400">Payment Details</h3>
+                <label class="mt-3 flex items-center gap-2 cursour-pointer">
+                    <input type="radio" class="payment-checkbox w-5 h-5" checked>
+                    <span>Cash on Delivery</span>
+                </label>
+            </div>
+            
+            <button class="mt-10 bg-[#F27A1A] px-7 py-3 text-[#fff] font-medium text-[16px]" id="makePayment">Make a Payment</button>
+        </div>
+        <div class="w-full shadow flex flex-col px-6 mt-16  py-6 ">
+          <div class="w-full flex justify-between items-center">
+            <h4 class="font-bold text-[20px] text-[#053D2E]">Order Note</h4>
+          <i class="fa-regular fa-pen-to-square text-[#10b981] text-[20px]"></i>
+          </div>
+          <div class="mt-5 w-full border border-gray-200 ">
+            <textarea name="" id="orderNote" class="w-full px-3 py-2 h-[100px] "></textarea>
+          </div>
+          <div class="w-full justify-end flex">
+             <button class="flex flex-end px-4 py-2 bg-[#10b981] w-[100px] justify-center items-center mt-3 rounded-md cursor-pointer text-[#fff] font-medium" id="orderNoteButton">Save</button>
+          </div>
+          
+
+        </div>
+        </div>
+        
+      </main>
+
+     <div id="paymentModal"
+    class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50 "
+>
+    <div class=" w-[450px]  rounded-xl p-6 shadow-xl bg-gradient-to-r from-sky-100 via-white to-emerald-100">
+
+       
+        <div class="flex flex-col justify-center items-center">
+            <div class="w-20 h-20 rounded-[50%] bg-[#4ee891] border-5 border-[#fff] flex justify-center items-center">
+                <i class="fa-solid fa-check text-[40px] text-[#fff]"></i>
+            </div>
+        </div>
+        <div class="items-center justify-center flex flex-col mt-3">
+             <h2 class="text-xl font-bold text-[24px] ">Your Order Has Been Accepted</h2>
+             <p>Transection ID : <span id="transactionId" class="font-semibold text-orange-500"></span></p>
+        </div>
+         <div class="flex justify-center items-center ">
+            <button class="mt-10 bg-[#F27A1A] px-7 py-3 text-[#fff] font-medium text-[16px] rounded-lg cursor-pointer" id="continueButton">Continue Shop</button>
+         </div>
+
+    </div>
+    </div>
+        
+      </div>
+    </div>
+  
+    <script src="./js/payment.js" type="module"></script>
+  </body>
+</html>

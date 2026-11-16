@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Details</title>
+
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.href = "./login.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-brands fa-opencart"></i>
+        </div>
+
+        <nav class="menu">
+          <a id="ordersMenu" href="order.html">Orders</a>
+          <a id="productsMenu" href="dashboard.html">Products</a>
+          <a id="categoriesMenu" href="categories.html">Categories</a>
+          <a id="campaignsMenu" href="campaigns.html">Campaigns</a>
+          <a id="settingsMenu" href="general-settings.html">Settings</a>
+        </nav>
+
+        <div class="profile">
+          <div class="user">
+            <div class="userFirst">
+              <p class="userNameFirst" id="userNameFirst"></p>
+            </div>
+            <div class="userName"><p id="userName">Users</p></div>
+          </div>
+
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header>
+          <i class="fa-regular fa-circle-left"></i>
+          <h2 id="pageTitle">Order Detail</h2>
+        </header>
+
+        <main>
+          <div id="orderToast" class="order-toast"></div>
+          <div class="order-detail-container">
+            <div class="left-side">
+              <div class="order-header">
+                <div class="order-info">
+                  <h2 id="orderNumber"></h2>
+
+                  <p id="orderDate"></p>
+
+                  <span id="paymentStatus" class="status-badge"></span>
+                </div>
+
+                <div class="progress-card">
+                  <div class="step" id="step-received">
+                    <div class="circle"></div>
+                    <p>Received</p>
+                  </div>
+
+                  <div class="line" id="line1"></div>
+
+                  <div class="step" id="step-preparing">
+                    <div class="circle"></div>
+                    <p>Preparing</p>
+                  </div>
+
+                  <div class="line" id="line2"></div>
+
+                  <div class="step" id="step-shipping">
+                    <div class="circle"></div>
+                    <p>Shipping</p>
+                  </div>
+
+                  <div class="line" id="line3"></div>
+
+                  <div class="step" id="step-delivered">
+                    <div class="circle"></div>
+                    <p>Delivered</p>
+                  </div>
+                </div>
+
+                <div class="order-actions">
+                  <button class="cancel-btn" id="cancelOrderBtn">
+                    Cancel Order
+                  </button>
+
+                  <div class="step-buttons">
+                    <button id="prevStepBtn" class="prev-step-btn">
+                      <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                    <button id="nextStepBtn" class="next-step-btn">
+                      Next Step
+                    </button>
+                  </div>
+                </div>
+
+                <div class="order-products-card">
+                  <h3>Products</h3>
+
+                  <div id="productsList"></div>
+
+                  <div class="payment-card">
+                    <div class="payment-header">
+                      <h3>Payment Details</h3>
+
+                      <span class="payment-status" id="paymentStatus">
+                        <i id="paymentIcon"></i>
+                        <span id="paymentText"></span>
+                      </span>
+                    </div>
+
+                    <!-- <div class="payment-row">
+                      <span>Payment Method</span>
+
+                      <div class="card-info">
+                        <div class="visa-card" id="cardType"></div>
+
+                        <div class="card-details">
+                          <strong id="cardNumber"></strong>
+                          <small id="cardHolder"></small>
+                        </div>
+                      </div>
+                    </div> -->
+                    <div class="payment-row">
+                      <span>Payment Method</span>
+
+                      <div class="card-info">
+                        <strong id="paymentMethod"></strong>
+                      </div>
+                    </div>
+
+                    <div class="payment-row">
+                      <span>Subtotal</span>
+
+                      <strong id="subtotal"></strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="right-side">
+              <div class="info-card orderNotCard">
+                <h3>Order Note</h3>
+                <p id="orderNote"></p>
+              </div>
+              <div class="info-card">
+                <h3>Customer</h3>
+                <div class="customer-info">
+                  <div class="customer-image">
+                    <img src="./image/pp.jpg" />
+                  </div>
+                  <div class="customer-details">
+                    <p id="customerName"></p>
+                    <span id="customerOrderCount"></span>
+                  </div>
+                </div>
+                <hr
+                  style="
+                    border: none;
+                    height: 1px;
+                    background-color: rgb(179, 179, 179);
+                    margin-top: 10px;
+                  "
+                />
+                <div class="info-card map">
+                  <h3>Shipping Address</h3>
+
+                  <iframe
+                    id="mapFrame"
+                    width="100%"
+                    height="220"
+                    style="border: 0; border-radius: 12px"
+                  >
+                  </iframe>
+
+                  <h4 id="shippingCustomer"></h4>
+
+                  <p id="address"></p>
+                  <hr
+                    style="
+                      border: none;
+                      height: 1px;
+                      background-color: rgb(179, 179, 179);
+                      margin-top: 10px;
+                    "
+                  />
+                  <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>
+                      <i class="fa-regular fa-envelope"></i>
+                      <span id="shippingEmail"></span>
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-phone"></i>
+                      <span id="shippingPhone"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="./js/order-detail.js" type="module"></script>
+  </body>
+</html>
